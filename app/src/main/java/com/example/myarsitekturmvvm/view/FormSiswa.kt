@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import com.example.myarsitekturmvvm.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -92,12 +91,12 @@ fun FormIsian(
                 color = Color.Red
             )
             OutlinedTextField(
-                value = "",
+                value = txtAlamat,
                 singleLine = true,
                 modifier = Modifier
                     .width(width = 250.dp),
                 label = {Text(text = "Alamat")},
-                onValueChange = {},
+                onValueChange = {txtAlamat = it},
             )
             Spacer(modifier = Modifier.height(height = 30.dp))
             Button(
