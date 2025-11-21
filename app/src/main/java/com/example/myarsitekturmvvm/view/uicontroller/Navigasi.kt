@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -23,7 +24,7 @@ enum class Navigasi {
 
 @Composable
 fun DataApp(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     viewModel: SiswaViewModel = viewModel(),
     navController : NavHostController = rememberNavController()
 ){

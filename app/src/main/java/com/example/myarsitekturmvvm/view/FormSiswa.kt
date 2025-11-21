@@ -42,7 +42,7 @@ fun FormIsian(
     var txtNama by remember { mutableStateOf("") }
     var txtAlamat by remember { mutableStateOf("") }
     var txtGender by remember { mutableStateOf("") }
-    val listData: MutableList<String> = remember { mutableListOf(txtNama, txtGender, txtAlamat) }
+    val listData: MutableList<String> =   mutableListOf(txtNama, txtGender, txtAlamat)
     Scaffold (modifier = Modifier,
         topBar = {
             TopAppBar(
