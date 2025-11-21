@@ -36,13 +36,13 @@ import androidx.compose.runtime.setValue
 @Composable
 fun FormIsian(
     pilihanJK: List<String>,
-    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onSubmitBttnClicked: (MutableList<String>) -> Unit,
     modifier: Modifier = Modifier
 ){
     var txtNama by remember { mutableStateOf("") }
     var txtAlamat by remember { mutableStateOf("") }
     var txtGender by remember { mutableStateOf("") }
-    val listData: MutableList<String> = mutableStateOf()(txtNama, txtGender, txtAlamat)
+    val listData: MutableList<String> = remember { mutableListOf(txtNama, txtGender, txtAlamat) }
     Scaffold (modifier = Modifier,
         topBar = {
             TopAppBar(
@@ -102,7 +102,7 @@ fun FormIsian(
             Button(
                 modifier = Modifier.fillMaxWidth(1f)
                     .padding(all = 25.dp),
-                onClick = onSubmitButtonClicked
+                onClick = {onSubmitBttnClicked(listData)}
             ) {
                 Text(text = stringResource(id = R.string.submit))
             }
