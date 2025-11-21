@@ -19,6 +19,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,13 +28,20 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.myarsitekturmvvm.R
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
-    OnSubmitBtnClick : () -> Unit
+    pilihanJK: List<String>,
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
 ){
+    var txtNama by remember { mutableStateOf("") }
+    var txtAlamat by remember { mutableStateOf("") }
+    var txtGender by remember { mutableStateOf("") }
+    val listData: MutableList<String> = mutableStateOf()(txtNama, txtGender, txtAlamat)
     Scaffold (modifier = Modifier,
         topBar = {
             TopAppBar(
@@ -58,7 +67,7 @@ fun FormIsian(
                 .padding(20.dp)
                 .width(250.dp), thickness = Thickness, color = Color.Red)
             Row {
-                jenisK.forEach {
+                pilihanJK.forEach {
                         item->
                     Row( verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
@@ -87,7 +96,7 @@ fun FormIsian(
             Button(
                 modifier = Modifier.fillMaxWidth(1f)
                     .padding(all = 25.dp),
-                onClick = OnSubmitBtnClick
+                onClick = onSubmitButtonClicked
             ) {
                 Text(text = stringResource(id = R.string.submit))
             }
